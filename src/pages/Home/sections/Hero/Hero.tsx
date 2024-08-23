@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography, styled } from "@mui/material";
 import Avatar from "../../../../assets/images/avatar.jpg";
 import DownloadIcon from "@mui/icons-material/Download";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import StyledButton from "../../../../components/StyledButton/StyledButton";
 import { AnimatedBackground } from "../../../../components/AnimatedBackground/AnimatedBackground";
 
@@ -26,6 +26,23 @@ const Hero = () => {
     borderRadius: "50%",
     border: `1px solid ${theme.palette.primary.contrastText}`,
   }));
+
+  const handleWhatsApp = () => {
+    const url =
+      "https://wa.me/5511972147541?text=Olá%20Gustavo,%20interessante%20seu%20portifolio";
+    window.open(url, "_blank");
+  };
+
+  const handleEmail = () => {
+    const subject = encodeURIComponent(
+      "Olá Gustavo, interessante seu portifolio"
+    );
+    const body = encodeURIComponent(
+      "Olá Gustavo,\n\nInteressante seu portifolio.\n\nAtenciosamente,\n[Seu Nome]"
+    );
+    const mailtoLink = `mailto:gustavomartins.developer@gmail.com?subject=${subject}&body=${body}`;
+    window.open(mailtoLink, "_blank");
+  };
 
   return (
     <>
@@ -74,7 +91,7 @@ const Hero = () => {
                 >
                   <StyledButton>
                     <DownloadIcon />
-                    <Typography>Download CV</Typography>
+                    <Typography onClick={handleEmail}>Download CV</Typography>
                   </StyledButton>
                 </Grid>
                 <Grid
@@ -85,8 +102,8 @@ const Hero = () => {
                   justifyContent="center"
                 >
                   <StyledButton>
-                    <MailOutlineIcon />
-                    <Typography>Contact me</Typography>
+                    <WhatsAppIcon />
+                    <Typography onClick={handleWhatsApp}>Contact me</Typography>
                   </StyledButton>
                 </Grid>
               </Grid>
